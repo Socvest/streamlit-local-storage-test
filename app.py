@@ -57,7 +57,7 @@ if st.session_state["local_storage_delete_key"] != "":
   if st.session_state["get_storage"]["item"] == itemKey_:
     del st.session_state["get_storage"] 
 
-# st.write( st.session_state["get_storage"].get('item') == itemKey_)
+st.write( st.session_state["get_storage"].get('item') == itemKey_, st.session_state["get_storage"].get('item'), st.session_state["get_storage"])
 
 
 
