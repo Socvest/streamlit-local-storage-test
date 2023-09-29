@@ -27,6 +27,8 @@ with cols[1].form("add_local_storage"):
   add_cols[1].text_input("value", key="local_storage_set_value")
   st.form_submit_button("submit", on_click=add_to_storage)
 
+
+cols[2].subheader("get from local storage")
 if "get_val" not in st.session_state:
     st.session_state["get_val"] = None
 
@@ -62,7 +64,7 @@ with cols[3].form("delete_local_storage"):
   st.text_input("key", key="local_storage_delete_key")
   st.form_submit_button("submit", on_click=delete_from_storage)
 
-st.write(st.session_state)
+# st.write(st.session_state)
 
 
 
