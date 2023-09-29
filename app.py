@@ -1,4 +1,5 @@
 import time
+import datetime
 import streamlit as st
 from streamlit_local_storage import LocalStorage
 
@@ -54,11 +55,11 @@ with cols[3].form("delete_local_storage"):
 if st.session_state["local_storage_delete_key"] != "":
   itemKey_ = st.session_state["local_storage_delete_key"]
   localS.deleteItem(itemKey_)
-  if st.session_state["get_storage"]["item"] == itemKey_:
-    del st.session_state["get_storage"] 
+  # if st.session_state["get_storage"]["item"] == itemKey_:
+  #   st.session_state["get_storage"] = None
 
 if "get_storage" in st.session_state and st.session_state["get_storage"] != None:
-  st.write( st.session_state["get_storage"].get('item') == st.session_state["local_storage_delete_key"], st.session_state["get_storage"].get('item'), st.session_state["get_storage"])
+  st.write("Post del",st.session_state["get_storage"]) # st.session_state["get_storage"].get('item') == st.session_state["local_storage_delete_key"], st.session_state["get_storage"].get('item'), st.session_state["get_storage"])
 
 
 
