@@ -8,8 +8,13 @@ if "get_local_storage_item" not in st.session_state:
 
 st.set_page_config(layout="wide")
 
-value = localS.get("James")
-st.write(value)
+
+
+st.text_input("test", key="test")
+if st.button("testing"):
+  st.write(st.session_state["test"])
+  value = localS.get(st.session_state["test"])
+  st.write(value)
 
 
 cols = st.columns([0.5,1,1,1,0.5])
