@@ -8,6 +8,8 @@ if "get_local_storage_item" not in st.session_state:
 
 st.set_page_config(layout="wide")
 
+value = localS.get("James")
+st.write(value)
 
 
 cols = st.columns([0.5,1,1,1,0.5])
@@ -26,20 +28,20 @@ with cols[1].form("add_local_storage"):
   st.form_submit_button("submit", on_click=add_to_storage)
 
 
-def get_from_storage():
-  itemKey = st.session_state["local_storage_set_key"]
-  value = localS.get(itemKey)
-  print(value)
-  time.sleep(1)
-  st.session_state["get_local_storage_item"] = value
+# def get_from_storage():
+#   itemKey = st.session_state["local_storage_set_key"]
+#   value = localS.get(itemKey)
+#   print(value)
+#   time.sleep(1)
+#   st.session_state["get_local_storage_item"] = value
   
 
-cols[2].subheader("get to local storage")
-with cols[2].form("get_local_storage"):
-  st.text_input("key", key="local_storage_get_key")
-  st.form_submit_button("submit", on_click=get_from_storage)
+# cols[2].subheader("get to local storage")
+# with cols[2].form("get_local_storage"):
+#   st.text_input("key", key="local_storage_get_key")
+#   st.form_submit_button("submit", on_click=get_from_storage)
   
-cols[2].write(st.session_state["get_local_storage_item"])
+# cols[2].write(st.session_state["get_local_storage_item"])
 
 def delete_from_storage():
   itemKey = st.session_state["local_storage_delete_key"]
