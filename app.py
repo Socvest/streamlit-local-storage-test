@@ -6,6 +6,9 @@ localS = LocalStorage()
 if "get_local_storage_item" not in st.session_state:
   st.session_state["get_local_storage_item"] = None
 
+if "get_storage" not in st.session_state:
+  st.session_state["get_storage"] = None
+
 st.set_page_config(layout="wide")
 
 
