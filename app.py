@@ -30,8 +30,8 @@ def add_to_storage():
   st.session_state["get_local_storage_item"] = value
   
 
-cols[1].subheader("add to local storage")
-with cols[1].form("add_local_storage"):
+cols[1].subheader("get to local storage")
+with cols[1].form("get_local_storage"):
   # add_cols = st.columns(2)
   st.text_input("key", key="local_storage_get_key")
   if st.session_state["get_local_storage_item"] != None:
