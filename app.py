@@ -30,6 +30,7 @@ def get_from_storage():
   itemKey = st.session_state["local_storage_set_key"]
   localS = LocalStorage()
   value = localS.get(itemKey)
+  print(value)
   time.sleep(1)
   st.session_state["get_local_storage_item"] = value
   
