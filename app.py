@@ -1,6 +1,9 @@
 import time
 import streamlit as st
 from streamlit_local_storage import LocalStorage
+
+st.set_page_config(layout="wide")
+
 localS = LocalStorage()
 
 if "get_local_storage_item" not in st.session_state:
@@ -8,8 +11,6 @@ if "get_local_storage_item" not in st.session_state:
 
 if "get_storage" not in st.session_state:
   st.session_state["get_storage"] = None
-
-st.set_page_config(layout="wide")
 
 
 cols = st.columns([0.5,1,1,1,0.5])
@@ -29,30 +30,15 @@ with cols[1].form("add_local_storage"):
 
 
 cols[2].subheader("get from local storage")
-if "get_val" not in st.session_state:
-    st.session_state["get_val"] = None
-
 with cols[2].form("get_data"):
     st.text_input("key", key="get_local_storage_v")
     st.form_submit_button("Submit") 
 
 if st.session_state["get_local_storage_v"] != "":
     val_ = localS.getItem(st.session_state["get_local_storage_v"], key="test_get_item")
-    st.session_state["get_val"] = val_
-cols[2].write(st.session_state["get_val"])
+    st.session_state["get_storage"] = val_
+cols[2].write(st.session_state["get_storage"])
 
-
-# def get_from_storage():
-#   itemKey = st.session_state["local_storage_set_key"]
-#   value = localS.get(itemKey, key="get_storage")
-#   cols[2].write(st.session_state["get_storage"])  
-
-# cols[2].subheader("get to local storage")
-# with cols[2].form("get_local_storage"):
-#   st.text_input("key", key="local_storage_get_key")
-#   st.form_submit_button("submit", on_click=get_from_storage)
-  
-# # cols[2].write(st.session_state["get_local_storage_item"])
 
 def delete_from_storage():
   itemKey = st.session_state["local_storage_delete_key"]
@@ -68,11 +54,10 @@ with cols[3].form("delete_local_storage"):
 if st.session_state["local_storage_delete_key"] != "":
   itemKey_ = st.session_state["local_storage_delete_key"]
   localS.deleteItem(itemKey_)
-  if st.session_state["get_val"].get('item') == itemKey_:
+  if st.session_state["get_val"]["item"] == itemKey_:
     del st.session_state["get_val"] 
-    # st.write( st.session_state["get_val"][itemKey_])
 
-st.write( st.session_state["get_val"].get('item') == itemKey_)
+# st.write( st.session_state["get_val"].get('item') == itemKey_)
 
 
 
