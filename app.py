@@ -62,7 +62,11 @@ def delete_from_storage():
 cols[3].subheader("delete to local storage")
 with cols[3].form("delete_local_storage"):
   st.text_input("key", key="local_storage_delete_key")
-  st.form_submit_button("submit", on_click=delete_from_storage)
+  st.form_submit_button("submit") #, on_click=delete_from_storage)
+
+
+if st.session_state["local_storage_delete_key"] != "":
+  localS.deleteItem(st.session_state["local_storage_delete_key"])
 
 # st.write(st.session_state)
 
