@@ -12,6 +12,8 @@ if "get_local_storage_item" not in st.session_state:
 
 if "get_storage" not in st.session_state:
   st.session_state["get_storage"] = None
+if "test_get_click_btn" not in st.session_state:
+  st.session_state["test_get_click_btn"] = False
 
 start = 1
 cols = st.columns([0.5,1,1,1,0.5])
@@ -29,13 +31,15 @@ with cols[1].form("add_local_storage"):
   add_cols[1].text_input("value", key="local_storage_set_value")
   st.form_submit_button("submit", on_click=add_to_storage)
 
+def testFunc():
+  st.session_state["test_get_click_btn"] = not st.session_state["test_get_click_btn"]
 
 cols[2].subheader("get from local storage")
 with cols[2].form("get_data"):
     st.text_input("key", key="get_local_storage_v")
-    st.form_submit_button("Submit") 
+    st.form_submit_button("Submit", on_click=testFunc) 
 
-if st.session_state["get_local_storage_v"] != "":
+if st.session_state["get_local_storage_v"] != "" and st.session_state["test_get_click_btn"]:
     start +=1
     st.write(start)
     val_ = localS.getItem(st.session_state["get_local_storage_v"], key="test_get_item")
