@@ -46,10 +46,10 @@ def delete_from_storage():
   value = localS.deleteItem(itemKey)
   
 
-cols[2].subheader("get to local storage")
-with cols[2].form("get_local_storage"):
+cols[3].subheader("delete to local storage")
+with cols[3].form("delete_local_storage"):
   st.text_input("key", key="local_storage_delete_key")
-  st.form_submit_button("submit", on_click=get_from_storage)
+  st.form_submit_button("submit", on_click=delete_from_storage)
 
 
 
