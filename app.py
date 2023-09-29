@@ -5,7 +5,7 @@ st.set_page_config(layout="wide")
 
 localS = LocalStorage()
 
-cols = st.columns(3)
+cols = st.columns([0.5,1,1,1,0.5[)
 
 def add_to_storage():
   itemKey = st.session_state["local_storage_set_key"]
@@ -13,8 +13,8 @@ def add_to_storage():
   localS.set(itemKey, itemValue)
   
 
-cols[0].subheader("add to local storage")
-with cols[0].form("add_local_storage"):
+cols[1].subheader("add to local storage")
+with cols[1].form("add_local_storage"):
   add_cols = st.columns(2)
   add_cols[0].text_input("key", key="local_storage_set_key")
   add_cols[1].text_input("value", key="local_storage_set_value")
