@@ -28,18 +28,19 @@ with cols[1].form("add_local_storage"):
   st.form_submit_button("submit", on_click=add_to_storage)
 
 
-# def get_from_storage():
-#   itemKey = st.session_state["local_storage_set_key"]
-#   value = localS.get(itemKey)
-#   print(value)
-#   time.sleep(1)
-#   st.session_state["get_local_storage_item"] = value
+def get_from_storage():
+  itemKey = st.session_state["local_storage_set_key"]
+  st.write(itemKey)
+  value = localS.get(itemKey)
+  cols[2].write(value)
+  # time.sleep(1)
+  # st.session_state["get_local_storage_item"] = value
   
 
-# cols[2].subheader("get to local storage")
-# with cols[2].form("get_local_storage"):
-#   st.text_input("key", key="local_storage_get_key")
-#   st.form_submit_button("submit", on_click=get_from_storage)
+cols[2].subheader("get to local storage")
+with cols[2].form("get_local_storage"):
+  st.text_input("key", key="local_storage_get_key")
+  st.form_submit_button("submit", on_click=get_from_storage)
   
 # cols[2].write(st.session_state["get_local_storage_item"])
 
