@@ -1,6 +1,7 @@
 import time
 import streamlit as st
 from streamlit_local_storage import LocalStorage
+localS = LocalStorage()
 
 if "get_local_storage_item" not in st.session_state:
   st.session_state["get_local_storage_item"] = None
@@ -14,7 +15,6 @@ cols = st.columns([0.5,1,1,1,0.5])
 def add_to_storage():
   itemKey = st.session_state["local_storage_set_key"]
   itemValue = st.session_state["local_storage_set_value"]
-  localS = LocalStorage()
   localS.set(itemKey, itemValue)
   
 
@@ -28,7 +28,6 @@ with cols[1].form("add_local_storage"):
 
 def get_from_storage():
   itemKey = st.session_state["local_storage_set_key"]
-  localS = LocalStorage()
   value = localS.get(itemKey)
   print(value)
   time.sleep(1)
@@ -41,6 +40,19 @@ with cols[2].form("get_local_storage"):
   st.form_submit_button("submit", on_click=get_from_storage)
   
 cols[2].write(st.session_state["get_local_storage_item"])
+
+def delete_from_storage():
+  itemKey = st.session_state["local_storage_delete_key"]
+  value = localS.deleteItem(itemKey)
+  
+
+cols[2].subheader("get to local storage")
+with cols[2].form("get_local_storage"):
+  st.text_input("key", key="local_storage_delete_key")
+  st.form_submit_button("submit", on_click=get_from_storage)
+
+
+
   
 
 
