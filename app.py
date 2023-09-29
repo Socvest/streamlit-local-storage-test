@@ -69,7 +69,7 @@ if st.session_state["local_storage_delete_key"] != "":
   itemKey_ = st.session_state["local_storage_delete_key"]
   localS.deleteItem(itemKey_)
   if st.session_state["get_val"].get(itemKey_) != None:
-    del st.session_state["get_val"].get(itemKey_)
+    del st.session_state["get_val"][itemKey_]
 
 # st.write(st.session_state["get_val"].get()
 
