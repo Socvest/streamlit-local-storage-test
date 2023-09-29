@@ -1,3 +1,4 @@
+import time
 import streamlit as st
 from streamlit_local_storage import LocalStorage
 
@@ -27,15 +28,16 @@ with cols[1].form("add_local_storage"):
 def add_to_storage():
   itemKey = st.session_state["local_storage_set_key"]
   value = localS.get(itemKey)
+  time.sleep(1)
   st.session_state["get_local_storage_item"] = value
   
 
 cols[2].subheader("get to local storage")
 with cols[2].form("get_local_storage"):
   st.text_input("key", key="local_storage_get_key")
-  if st.session_state["get_local_storage_item"] != None:
-    st.write(st.session_state["get_local_storage_item"])
   st.form_submit_button("submit", on_click=add_to_storage)
+  
+cols[2].write(st.session_state["get_local_storage_item"])
   
 
 
