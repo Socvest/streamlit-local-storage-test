@@ -54,10 +54,10 @@ with cols[3].form("delete_local_storage"):
 if st.session_state["local_storage_delete_key"] != "":
   itemKey_ = st.session_state["local_storage_delete_key"]
   localS.deleteItem(itemKey_)
-  if st.session_state["get_val"]["item"] == itemKey_:
-    del st.session_state["get_val"] 
+  if st.session_state["get_storage"]["item"] == itemKey_:
+    del st.session_state["get_storage"] 
 
-# st.write( st.session_state["get_val"].get('item') == itemKey_)
+# st.write( st.session_state["get_storage"].get('item') == itemKey_)
 
 
 
