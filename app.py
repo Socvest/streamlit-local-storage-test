@@ -9,14 +9,6 @@ if "get_local_storage_item" not in st.session_state:
 st.set_page_config(layout="wide")
 
 
-
-st.text_input("test", key="test")
-if st.button("testing"):
-  st.write(st.session_state["test"])
-  value = localS.get(st.session_state["test"])
-  st.write(value)
-
-
 cols = st.columns([0.5,1,1,1,0.5])
 
 def add_to_storage():
@@ -35,12 +27,8 @@ with cols[1].form("add_local_storage"):
 
 def get_from_storage():
   itemKey = st.session_state["local_storage_set_key"]
-  st.write(itemKey)
-  value = localS.get(itemKey)
-  cols[2].write(value)
-  # time.sleep(1)
-  # st.session_state["get_local_storage_item"] = value
-  
+  value = localS.get(itemKey, key="get_storage")
+  cols[2].write(st.session_state["get_storage"])  
 
 cols[2].subheader("get to local storage")
 with cols[2].form("get_local_storage"):
