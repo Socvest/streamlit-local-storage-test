@@ -13,7 +13,7 @@ if "get_local_storage_item" not in st.session_state:
 if "get_storage" not in st.session_state:
   st.session_state["get_storage"] = None
 
-
+start = 1
 cols = st.columns([0.5,1,1,1,0.5])
 
 def add_to_storage():
@@ -36,6 +36,8 @@ with cols[2].form("get_data"):
     st.form_submit_button("Submit") 
 
 if st.session_state["get_local_storage_v"] != "":
+    start +=1
+    st.write(start)
     val_ = localS.getItem(st.session_state["get_local_storage_v"], key="test_get_item")
     st.session_state["get_storage"] = val_
 cols[2].write(st.session_state["get_storage"])
