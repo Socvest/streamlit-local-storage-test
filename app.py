@@ -50,6 +50,8 @@ with cols[3].form("delete_local_storage"):
   st.text_input("key", key="local_storage_delete_key")
   st.form_submit_button("submit", on_click=delete_from_storage)
 
+st.write(st.session_state)
+
 
 
   
