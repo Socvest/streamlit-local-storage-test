@@ -15,7 +15,6 @@ if "get_storage" not in st.session_state:
 if "test_get_click_btn" not in st.session_state:
   st.session_state["test_get_click_btn"] = False
 
-start = 1
 cols = st.columns([0.5,1,1,1,0.5])
 
 def add_to_storage():
@@ -41,11 +40,11 @@ with cols[2].form("get_data"):
 
 if st.session_state["get_local_storage_v"] != "" or st.session_state["test_get_click_btn"]:
   st.session_state["test_get_click_btn"] = False
-  start +=1
-  st.write(start)
   val_ = localS.getItem(st.session_state["get_local_storage_v"], key="test_get_item")
   st.session_state["get_storage"] = val_
 cols[2].write(st.session_state["get_storage"])
+st.write(st.session_state["test_get_click_btn"])
+
 
 
 def delete_from_storage():
