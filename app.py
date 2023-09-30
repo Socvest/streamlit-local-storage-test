@@ -38,13 +38,15 @@ with cols[2].form("get_data"):
   st.text_input("key", key="get_local_storage_v")
   st.form_submit_button("Submit", on_click=testFunc) 
 
+print(st.session_state["test_get_click_btn")
 st.write(st.session_state["test_get_click_btn"])
 if st.session_state["get_local_storage_v"] != "" or st.session_state["test_get_click_btn"]:
   st.session_state["test_get_click_btn"] = False
   val_ = localS.getItem(st.session_state["get_local_storage_v"], key="test_get_item")
   st.session_state["get_storage"] = val_
 cols[2].write(st.session_state["get_storage"])
-st.write(st.session_state["test_get_click_btn"])
+# st.write(st.session_state["test_get_click_btn"])
+print(st.session_state["test_get_click_btn")
 
 
 
@@ -64,10 +66,6 @@ if st.session_state["local_storage_delete_key"] != "":
   localS.deleteItem(itemKey_)
   # if st.session_state["get_storage"]["item"] == itemKey_:
   #   st.session_state["get_storage"] = None
-
-if "get_storage" in st.session_state and st.session_state["get_storage"] != None:
-  st.write("Post del",st.session_state["get_storage"]) # st.session_state["get_storage"].get('item') == st.session_state["local_storage_delete_key"], st.session_state["get_storage"].get('item'), st.session_state["get_storage"])
-
 
 
   
