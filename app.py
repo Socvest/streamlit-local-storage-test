@@ -32,7 +32,7 @@ with cols[1].form("add_local_storage"):
   st.form_submit_button("submit", on_click=add_to_storage)
 
 def testFunc():
-  st.session_state["test_get_click_btn"] = not st.session_state["test_get_click_btn"]
+  st.session_state["test_get_click_btn"] = True
 
 cols[2].subheader("get from local storage")
 with cols[2].form("get_data"):
@@ -40,10 +40,11 @@ with cols[2].form("get_data"):
     st.form_submit_button("Submit", on_click=testFunc) 
 
 if st.session_state["get_local_storage_v"] != "" and st.session_state["test_get_click_btn"]:
-    start +=1
-    st.write(start)
-    val_ = localS.getItem(st.session_state["get_local_storage_v"], key="test_get_item")
-    st.session_state["get_storage"] = val_
+  st.session_state["test_get_click_btn"] = False
+  start +=1
+  st.write(start)
+  val_ = localS.getItem(st.session_state["get_local_storage_v"], key="test_get_item")
+  st.session_state["get_storage"] = val_
 cols[2].write(st.session_state["get_storage"])
 
 
