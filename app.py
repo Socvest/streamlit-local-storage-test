@@ -35,8 +35,8 @@ def testFunc():
 
 cols[2].subheader("get from local storage")
 with cols[2].form("get_data"):
-    st.text_input("key", key="get_local_storage_v")
-    st.form_submit_button("Submit", on_click=testFunc) 
+  st.text_input("key", key="get_local_storage_v")
+  st.form_submit_button("Submit", on_click=testFunc) 
 
 if st.session_state["get_local_storage_v"] != "" or st.session_state["test_get_click_btn"]:
   st.session_state["test_get_click_btn"] = False
