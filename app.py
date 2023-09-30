@@ -39,7 +39,7 @@ with cols[2].form("get_data"):
     st.text_input("key", key="get_local_storage_v")
     st.form_submit_button("Submit", on_click=testFunc) 
 
-if st.session_state["get_local_storage_v"] != "" and st.session_state["test_get_click_btn"]:
+if st.session_state["get_local_storage_v"] != "" or st.session_state["test_get_click_btn"]:
   st.session_state["test_get_click_btn"] = False
   start +=1
   st.write(start)
