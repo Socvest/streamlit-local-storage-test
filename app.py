@@ -38,7 +38,7 @@ with cols[2].form("get_data"):
   st.text_input("key", key="get_local_storage_v")
   st.form_submit_button("Submit", on_click=testFunc) 
 
-print(st.session_state["test_get_click_btn")
+print(st.session_state["test_get_click_btn"])
 st.write(st.session_state["test_get_click_btn"])
 if st.session_state["get_local_storage_v"] != "" or st.session_state["test_get_click_btn"]:
   st.session_state["test_get_click_btn"] = False
@@ -46,7 +46,7 @@ if st.session_state["get_local_storage_v"] != "" or st.session_state["test_get_c
   st.session_state["get_storage"] = val_
 cols[2].write(st.session_state["get_storage"])
 # st.write(st.session_state["test_get_click_btn"])
-print(st.session_state["test_get_click_btn")
+print(st.session_state["test_get_click_btn"])
 
 
 
