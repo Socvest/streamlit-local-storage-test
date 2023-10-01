@@ -11,6 +11,9 @@ def LocalStore():
 localS = LocalStore()
 st.write(localS.storedItems)
 
+localS2 = LocalStorage()
+st.write(localS2.getAll())
+
 if "get_local_storage_item" not in st.session_state:
     st.session_state["get_local_storage_item"] = None
 if "get_storage" not in st.session_state:
