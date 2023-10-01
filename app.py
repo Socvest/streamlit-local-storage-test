@@ -3,8 +3,8 @@ import streamlit as st
 from streamlit_local_storage import LocalStorage
 
 st.set_page_config(layout="wide")
-if "class_init" not in st.session_state:
-    st.session_state["class_init"] = LocalStorage()
+# if "class_init" not in st.session_state:
+#     st.session_state["class_init"] = LocalStorage()
 
 @st.cache_resource(experimental_allow_widgets=True)
 def LocalStore():
