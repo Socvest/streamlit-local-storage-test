@@ -11,6 +11,7 @@ if "class_init" not in st.session_state:
 #     return LocalStorage()
     
 localS = st.session_state["class_init"]
+st.write(localS.storedItems)
 
 if "get_local_storage_item" not in st.session_state:
     st.session_state["get_local_storage_item"] = None
