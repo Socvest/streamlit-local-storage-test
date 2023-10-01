@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 if "class_init" not in st.session_state:
     st.session_state["class_init"] = LocalStorage()
 
-@st.cache_data(experimental_allow_widgets=True)
+@st.cache_resource(experimental_allow_widgets=True)
 def LocalStore():
     return LocalStorage()
     
