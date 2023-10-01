@@ -63,7 +63,7 @@ with cols[3].form("delete_local_storage"):
 if st.session_state["local_storage_delete_key"] != "":
     itemKey_ = st.session_state["local_storage_delete_key"]
     localS.deleteItem(itemKey_) 
-    LocalStore.clear()
+    # LocalStore.clear()
 
 
 # st.write(st.session_state["get_storage"])
