@@ -7,7 +7,7 @@ st.set_page_config(layout="wide")
 @st.cache_data(experimental_allow_widgets=True)
 def LocalStore():
     return LocalStorage()
-localS = LocalStore()
+localS = LocalStorage #LocalStore()
 
 
 if "get_local_storage_item" not in st.session_state:
