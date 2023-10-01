@@ -4,11 +4,12 @@ from streamlit_local_storage import LocalStorage
 
 st.set_page_config(layout="wide")
 
-@st.cache_data(experimental_allow_widgets=True)
+@st.cache_data #(experimental_allow_widgets=True)
 def LocalStore():
     return LocalStorage()
+    
 localS = LocalStore()
-
+st.write(localS.storedItems)
 
 if "get_local_storage_item" not in st.session_state:
     st.session_state["get_local_storage_item"] = None
@@ -64,7 +65,7 @@ if st.session_state["local_storage_delete_key"] != "":
 
 # st.write(st.session_state["get_storage"])
 
-st.write(localS.storedItems)
+
 
 
 
