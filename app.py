@@ -1,18 +1,14 @@
 import time
-import datetime
 import streamlit as st
 from streamlit_local_storage import LocalStorage
 
 st.set_page_config(layout="wide")
 
-@st.cache_resource(experimental_allow_widgets=True)
+@st.cache_data(experimental_allow_widgets=True)
 def LocalStore():
     return LocalStorage()
-
 localS = LocalStore()
 
-if "start" not in st.session_state:
-    st.session_state["start"] = 0
 
 if "get_local_storage_item" not in st.session_state:
     st.session_state["get_local_storage_item"] = None
@@ -40,8 +36,6 @@ with cols[1].form("add_local_storage"):
     st.form_submit_button("submit", on_click=add_to_storage)
     st.session_state["saved_cols"] = st.columns(1)
 
-def testFunc():
-    st.session_state["test_get_click_btn"] = True
 
 cols[2].subheader("get from local storage")
 with cols[2].form("get_data"):
@@ -51,8 +45,6 @@ with cols[2].form("get_data"):
 if st.session_state["get_local_storage_v"] != "": 
     val_ = localS.getItem(st.session_state["get_local_storage_v"])
     st.session_state["get_storage"] = val_
-    st.session_state["start"] += 1 
-    st.write(st.session_state["start"])
     
     cols[2].write(st.session_state["get_storage"])
 
