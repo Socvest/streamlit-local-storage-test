@@ -6,11 +6,11 @@ st.set_page_config(layout="wide")
 if "class_init" not in st.session_state:
     st.session_state["class_init"] = LocalStorage()
 
-# @st.cache_data(experimental_allow_widgets=True)
-# def LocalStore():
-#     return LocalStorage()
+@st.cache_data(experimental_allow_widgets=True)
+def LocalStore():
+    return LocalStorage()
     
-localS = st.session_state["class_init"]
+localS = LocalStore() #st.session_state["class_init"]
 st.write(localS.storedItems)
 
 if "get_local_storage_item" not in st.session_state:
