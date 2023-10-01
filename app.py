@@ -4,7 +4,7 @@ from streamlit_local_storage import LocalStorage
 
 st.set_page_config(layout="wide")
 
-@st.cache_data #(experimental_allow_widgets=True)
+@st.cache_data(experimental_allow_widgets=True)
 def LocalStore():
     return LocalStorage()
     
