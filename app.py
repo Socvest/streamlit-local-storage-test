@@ -3,16 +3,14 @@ import streamlit as st
 from streamlit_local_storage import LocalStorage
 
 st.set_page_config(layout="wide")
+if "class_init" not in st.session_state:
+    st.session_state["class_init"] = LocalStorage()
 
-@st.cache_data(experimental_allow_widgets=True)
-def LocalStore():
-    return LocalStorage()
+# @st.cache_data(experimental_allow_widgets=True)
+# def LocalStore():
+#     return LocalStorage()
     
-localS = LocalStore()
-st.write(localS.storedItems)
-
-localS2 = LocalStorage()
-st.write(localS2.getAll())
+localS = st.session_state["class_init"]
 
 if "get_local_storage_item" not in st.session_state:
     st.session_state["get_local_storage_item"] = None
