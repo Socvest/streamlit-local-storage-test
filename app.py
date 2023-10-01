@@ -7,7 +7,7 @@ st.set_page_config(layout="wide")
 @st.cache_data(experimental_allow_widgets=True)
 def LocalStore():
     return LocalStorage()
-localS = LocalStorage #LocalStore()
+localS = LocalStore()
 
 
 if "get_local_storage_item" not in st.session_state:
@@ -62,7 +62,9 @@ if st.session_state["local_storage_delete_key"] != "":
     localS.deleteItem(itemKey_) 
 
 
-st.write(st.session_state["get_storage"])
+# st.write(st.session_state["get_storage"])
+
+st.write(localS.storedItems)
 
 
 
