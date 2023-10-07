@@ -2,6 +2,8 @@ import time
 import streamlit as st
 from streamlit_local_storage import LocalStorage
 
+st.set_page_config(layout="wide")
+
 if "set_cookie_placement" not in st.session_state:
     st.session_state["set_cookie_placement"] = None
 
