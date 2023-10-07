@@ -52,12 +52,12 @@ def get_one_item():
 with cols[1].form("get_storage", clear_on_submit=True):
     st.subheader("Get Storage")
     st.text_input("key", key="get_storage_item")
-    st.form_submit_button("get this", on_click=get_one_item) #, on_click=setCookie)
+    st.form_submit_button("get this") #, on_click=get_one_item) #, on_click=setCookie)
     st.session_state["get_cookie_placement"] = st.columns(1)
 
-# if st.session_state["get_storage_item"] != "":
-#     get_item = localS.getItem(st.session_state["get_storage_item"])
-#     st.write(get_item)
+if st.session_state["get_storage_item"] != "":
+    get_item = localS.getItem(st.session_state["get_storage_item"])
+    st.write(get_item)
 
 
 def deleteItem():
