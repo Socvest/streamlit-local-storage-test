@@ -1,1 +1,1 @@
-streamlit-local-storage
+streamlit-local-storage==0.14
