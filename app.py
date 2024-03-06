@@ -40,7 +40,7 @@ def setCookie():
 with cols[0].form("set_storage"):
     st.subheader("Set Storage")
     st.text_input("key", key="set_storage_item")
-    st.text_input("key", key="set_storage_value")
+    st.text_input("value", key="set_storage_value")
     st.form_submit_button("set this", on_click=setCookie)
     st.session_state["set_cookie_placement"] = st.columns(1)
 
@@ -57,6 +57,7 @@ with cols[1].form("get_storage", clear_on_submit=True):
 
 if st.session_state["get_storage_item"] != "":
     get_item = localS.getItem(st.session_state["get_storage_item"])
+    time.sleep(2)
     st.write(get_item)
 
 
@@ -78,13 +79,13 @@ def getAllStorage():
 
 with cols[1].form("get_all_storage"):
     st.subheader("Get all of storage")
-   # st.multiselect("keys", options=["One", "two", "three", "four", "five", "six", "seven"], key="get_list_of_storage")
     st.form_submit_button("Get all storage", on_click=getAllStorage)
     st.session_state["get_storage_list_placement"] = st.columns(1)
 
 
 if st.session_state["getAll_items"]:
     all_storage_ = localS.getAll()
+    time.sleep(2)
     st.write(all_storage_)
 
 
