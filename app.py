@@ -1,6 +1,7 @@
-import time
+import time 
 import streamlit as st
-from streamlit_local_storage import LocalStorage
+from __init__ import LocalStorage
+# from streamlit_local_storage import LocalStorage
 
 st.set_page_config(layout="wide")
 
@@ -44,20 +45,22 @@ with cols[0].form("set_storage"):
     st.form_submit_button("set this", on_click=setCookie)
     st.session_state["set_cookie_placement"] = st.columns(1)
 
-def get_one_item():
-    with st.session_state["get_cookie_placement"][0]:
-        get_item = localS.getItem(st.session_state["get_storage_item"])
-    st.write(get_item)
+# def get_one_item():
+#     with st.session_state["get_cookie_placement"][0]:
+#         get_item = localS.getItem(st.session_state["get_storage_item"])
+#     st.write(get_item)
+
+if "get_storage_item_dummy" not in st.session_state:
+    st.session_state["get_storage_item_dummy"] = ""
 
 with cols[1].form("get_storage", clear_on_submit=True):
     st.subheader("Get Storage")
-    st.text_input("key", key="get_storage_item")
+    st.text_input("key", value=st.session_state["get_storage_item_dummy"], key="get_storage_item")
     st.form_submit_button("get this") #, on_click=get_one_item) #, on_click=setCookie)
     st.session_state["get_cookie_placement"] = st.columns(1)
 
 if st.session_state["get_storage_item"] != "":
-    get_item = localS.getItem(st.session_state["get_storage_item"])
-    time.sleep(2)
+    get_item = localS.getItem(st.session_state["get_storage_item"]) #, default="James")
     st.write(get_item)
 
 
@@ -85,9 +88,7 @@ with cols[1].form("get_all_storage"):
 
 if st.session_state["getAll_items"]:
     all_storage_ = localS.getAll()
-    time.sleep(2)
-    st.write(all_storage_)
-
+    st.write(all_storage_) 
 
 def deleteFromStorage(): 
     st.session_state["del_list_click"] = not st.session_state["del_list_click"]
@@ -97,7 +98,6 @@ def deleteFromStorage():
 
 with cols[2].form("delete_all_storage"):
     st.subheader("Delete all of storage")
-   # st.multiselect("keys", options=["One", "two", "three", "four", "five", "six", "seven"], key="get_list_of_storage")
     st.form_submit_button("Delete all storage", on_click=deleteFromStorage)
     st.session_state["delete_storage_list_placement"] = st.columns(1)
 
